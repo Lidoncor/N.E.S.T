@@ -1,0 +1,44 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.0.1'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'ru.nstu'
+version = '1.0.0'
+description = 'Neural Expert System Tool'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+
+	implementation "org.yaml:snakeyaml:2.4"
+	implementation "org.mapstruct:mapstruct:1.6.3"
+	implementation "com.microsoft.onnxruntime:onnxruntime:1.24.3"
+
+    implementation "com.formdev:flatlaf:3.7"
+    implementation "com.formdev:flatlaf-extras:3.7"
+    implementation "com.fifesoft:rsyntaxtextarea:3.3.3"
+
+    compileOnly("org.projectlombok:lombok:1.18.42")
+    annotationProcessor("org.projectlombok:lombok:1.18.42")
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
+	testCompileOnly("org.projectlombok:lombok:1.18.42")
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.42")
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
